@@ -1,0 +1,31 @@
+﻿@model IEnumerable<EmployeeFirst.Models.EmployeeModel>
+@{
+    ViewData["Title"] = "Employee List";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Employee List: </h1>
+
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Action</th>
+        </tr>
+        @foreach (var item in Model) {
+        <tr>
+                <td>@Html.DisplayFor(modelItem => item.Name)</td>
+                <td>@Html.DisplayFor(modelItem => item.Surname)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                    @Html.ActionLink("Update", "UpdateEmployee", new { id=item.Id })
+                </td>
+        </tr>
+        }
+        <tr>
+            <td>@Html.ActionLink("New Employee", "NewEmployee", null)</td>
+        </tr>
+    </table>
+
+</div>
